@@ -1,101 +1,100 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { Moon, Sun, Instagram, Send } from 'lucide-react'
+
+export const runtime = "edge";
+
+export default function Component() {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
+  }, [isDarkMode])
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(prevMode => !prevMode)
+  }
+
+  const content = {
+    title: "فضای آنلاین آکادومی",
+    subtitle: "در آکادومی، ما شما را همراهی می‌کنیم تا سفری دلچسب و پر از یادگیری در دنیای موسیقی و هنر تجربه کنید.",
+    courses: {
+      title: "کلاس های آکادومی",
+      description: "شامل کلاس های خصوصی ساز و دوره های چند جلسه ای موسیقی",
+      link: "#"
+    },
+    workshops: {
+      title: "اشتراک آکادومی",
+      description: "دسترسی به تمامی کلاس های هفتگی و دوره های آکادومی به همراه مشاوره هنری خصوصی",
+      link: "#"
+    },
+    counseling: {
+      title: "محتوای تکمیلی آکادومی",
+      description: "شامل ویدیوها و مقالات آموزشی پژوهشی در زمینه هنر",
+      link: "#"
+    }
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div dir="rtl" className={`flex flex-col min-h-screen ${isDarkMode ? 'bg-[#2E2E2E] text-white' : 'bg-white text-[#2E2E2E]'} font-sans`}>
+      <header className="container mx-auto px-4 py-6">
+        <nav className="flex justify-between items-center">
+          <div className="flex items-center space-x-2 space-x-reverse">
+            <Image 
+              src={isDarkMode ? '/logo-light.png' : '/logo-dark.png'} // Change these paths to your actual logo paths
+              alt="Acadomy Logo"
+              width={40} 
+              height={40} 
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <span className="font-semibold text-xl">آکادومی</span>
+          </div>
+          <div className="flex items-center space-x-4 space-x-reverse">
+            <button className={`${isDarkMode ? 'bg-white text-[#2E2E2E]' : 'bg-[#2E2E2E] text-white'} px-4 py-2 rounded-full text-sm hover:bg-gray-400`}>
+              خانه
+            </button>
+            <button onClick={toggleDarkMode} className={`p-2 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600`}>
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main className="container mx-auto px-4 py-12 flex-grow text-center">
+        <section className="mb-20">
+          <h1 className="text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">{content.title}</h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            {content.subtitle}
+          </p>
+        </section>
+
+        {/* Center-aligned and closer boxes with reduced height */}
+        <section className="flex justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[content.courses, content.workshops, content.counseling].map((service, index) => (
+              <a 
+                href={service.link} 
+                key={index} 
+                className={`w-64 h-40 p-4 rounded-lg transition-colors duration-300 hover:bg-gray-500 hover:text-white ${isDarkMode ? 'bg-white text-[#2E2E2E]' : 'bg-[#2E2E2E] text-white'}`}
+              >
+                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                {/* Apply mt-4 for all, but mt-6 for the middle one */}
+                <p className={`${index === 1 ? 'mt-4' : 'mt-6'}`}>{service.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
+
+      <footer className="mt-20 flex justify-center space-x-8 mb-4">
+        <a href="https://www.instagram.com/acadomy.art/?utm_source=ig_web_button_share_sheet" className="text-current hover:text-gray-300" target="_blank">
+          <Instagram className="w-14 h-6" />
         </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+        <a href="https://t.me/AcadomySupport" className="text-current hover:text-gray-300" target="_blank">
+          <Send className="w-6 h-6" />
         </a>
       </footer>
     </div>
-  );
+  )
 }
