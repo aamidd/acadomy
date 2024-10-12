@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
+import Head from 'next/head'
 
 export const runtime = "edge";
 
@@ -19,18 +20,18 @@ export default function Component() {
 
   const content = {
     title: "فضای آنلاین آکادومی",
-    subtitle: "در آکادومی، ما شما را همراهی می‌کنیم تا سفری دلچسب و پر از یادگیری در دنیای موسیقی و هنر تجربه کنید.",
+    subtitle: "در آکادومی، ما شما را همراهی می‌کنیم تا سفری دلچسب و پر از یادگیری در دنیای موسیقی و هنر تجربه کنید",
     courses: {
       title: "کلاس های آکادومی",
       description: "شامل کلاس های خصوصی ساز و دوره های چند جلسه ای موسیقی",
       link: "#"
     },
-    workshops: {
+    subscriptions: {
       title: "اشتراک آکادومی",
       description: "دسترسی به تمامی کلاس های هفتگی و دوره های آکادومی به همراه مشاوره هنری خصوصی",
       link: "#"
     },
-    counseling: {
+    suppcontent: {
       title: "محتوای تکمیلی آکادومی",
       description: "شامل ویدیوها و مقالات آموزشی پژوهشی در زمینه هنر",
       link: "#"
@@ -38,16 +39,19 @@ export default function Component() {
   }
 
   return (
+    
     <div dir="rtl" className={`flex flex-col min-h-screen ${isDarkMode ? 'bg-[#2E2E2E] text-white' : 'bg-white text-[#2E2E2E]'} font-sans`}>
       <header className="container mx-auto px-4 py-6">
         <nav className="flex justify-between items-center">
           <div className="flex items-center space-x-2 space-x-reverse">
+            <a href="https://acadomy.art/">
             <Image 
               src={isDarkMode ? '/logo-light.png' : '/logo-dark.png'} // Change these paths to your actual logo paths
               alt="Acadomy Logo"
               width={40} 
               height={40} 
             />
+            </a>
             <span className="font-semibold text-xl">آکادومی</span>
           </div>
           <div className="flex items-center space-x-4 space-x-reverse">
@@ -72,7 +76,7 @@ export default function Component() {
         {/* Center-aligned and closer boxes with reduced height */}
         <section className="flex justify-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[content.courses, content.workshops, content.counseling].map((service, index) => (
+            {[content.courses, content.subscriptions, content.suppcontent].map((service, index) => (
               <a 
                 href={service.link} 
                 key={index} 
