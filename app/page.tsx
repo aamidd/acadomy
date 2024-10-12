@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Moon, Sun, Instagram, Send } from 'lucide-react'
+import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
 
 export const runtime = "edge";
 
@@ -87,14 +87,18 @@ export default function Component() {
         </section>
       </main>
 
-      <footer className="mt-20 flex justify-center space-x-8 mb-4">
-        <a href="https://www.instagram.com/acadomy.art/?utm_source=ig_web_button_share_sheet" className="text-current hover:text-gray-300" target="_blank">
-          <Instagram className="w-14 h-6" />
+      <footer className="mt-20 flex justify-center items-center mb-4">
+        <a href="https://t.me/Acadomy" className="text-current hover:text-gray-300 mx-1.5" target="_blank">
+          <Send className="w-7 h-7" />
         </a>
-        <a href="https://t.me/AcadomySupport" className="text-current hover:text-gray-300" target="_blank">
-          <Send className="w-6 h-6" />
+        <a href="https://www.instagram.com/acadomy.art/?utm_source=ig_web_button_share_sheet" className="text-current hover:text-gray-300 mx-1" target="_blank">
+          <Instagram className="w-7 h-7" />
+        </a>
+        <a href="https://t.me/AcadomySupport" className="text-current hover:text-gray-300 mx-1" target="_blank">
+          <HeadphonesIcon className="w-7 h-7" />
         </a>
       </footer>
+
     </div>
   )
 }
