@@ -1,11 +1,11 @@
-import { Metadata } from 'next'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Acadomy',
+  description: 'Discover and develop your talents with Acadomy',
 }
 
 export default function RootLayout({
