@@ -45,12 +45,12 @@ export default function Component() {
         <nav className="flex justify-between items-center">
           <div className="flex items-center space-x-2 space-x-reverse">
             <a href="https://acadomy.art/">
-            <Image 
-              src={isDarkMode ? '/logo-light.png' : '/logo-dark.png'} // Change these paths to your actual logo paths
-              alt="Acadomy Logo"
-              width={40} 
-              height={40} 
-            />
+              <Image 
+                src={isDarkMode ? '/logo-light.png' : '/logo-dark.png'} // Change these paths to your actual logo paths
+                alt="Acadomy Logo"
+                width={40} 
+                height={40} 
+              />
             </a>
             <span className="font-semibold text-xl">آکادومی</span>
           </div>
