@@ -7,6 +7,14 @@
   --foreground: #171717;
 }
 
+@font-face {
+  font-family: 'Yekan Bakh';
+  src: url('/fonts/Yekan.woff') format('woff'),
+       url('/fonts/Yekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -24,4 +32,13 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+h1, h2, h3, p, span, button {
+  font-family: 'Yekan Bakh', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
 }

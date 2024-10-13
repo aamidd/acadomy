@@ -9,9 +9,10 @@
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy --branch production --commit-dirty=true" 
+    "deploy": "npm run pages:build && wrangler pages deploy --branch production --commit-dirty=true"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18"
