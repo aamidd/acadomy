@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
+import { useTheme } from '@/app/theme-context'
 
 interface ClassOption {
   id: string
@@ -18,12 +19,13 @@ const classOptions: ClassOption[] = [
 ]
 
 export default function RegistrationForm() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { isDarkMode, toggleDarkMode } = useTheme()
   const [selectedClass, setSelectedClass] = useState<ClassOption>(classOptions[0])
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    age: '',
     musicBackground: '',
     preferredTimes: '',
   })
@@ -31,10 +33,6 @@ export default function RegistrationForm() {
   useEffect(() => {
     document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
   }, [isDarkMode])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode)
-  }
 
   const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selected = classOptions.find(option => option.id === e.target.value)
@@ -127,6 +125,20 @@ export default function RegistrationForm() {
           </div>
 
           <div className="mb-6">
+            <label htmlFor="age" className="block mb-2 font-semibold">سن:</label>
+            <input
+              type="text"
+              id="age"
+              name="age"
+              className={`w-full px-3 py-2 rounded-md ${isDarkMode ? 'bg-white text-[#2E2E2E]' : 'bg-[#2E2E2E] text-white'}`}
+              required
+              onChange={handleInputChange}
+              pattern="\d*"
+              inputMode="numeric"
+            />
+          </div>
+
+          <div className="mb-6">
             <label htmlFor="email" className="block mb-2 font-semibold">ایمیل:</label>
             <input
               type="email"
@@ -151,7 +163,7 @@ export default function RegistrationForm() {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="musicBackground" className="block mb-2 font-semibold">سابقه در موسیقی:</label>
+            <label htmlFor="musicBackground" className="block mb-2 font-semibold">سابقه شما در موسیقی:</label>
             <textarea
               id="musicBackground"
               name="musicBackground"

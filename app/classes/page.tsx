@@ -1,38 +1,38 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
+import { Moon, Sun, Users, User, Video, Instagram, Send, HeadphonesIcon } from 'lucide-react'
+import { useTheme } from '../theme-context'
 
 const classTypes = {
   prv: {
     title: "کلاس‌های خصوصی",
     description: "آموزش شخصی‌سازی شده با توجه به نیازهای فردی شما",
-    link: "/classes/private"
+    link: "/classes/private",
+    icon: <User className="w-10 h-10 mb-2" />
   },
   group: {
     title: "کلاس‌های گروهی",
-    description: "یادگیری در محیطی تعاملی همراه با همکلاسی‌ها",
-    link: "/classes/group"
+    description: "تجربه یادگیری در محیطی مشارکتی و جمعی",
+    link: "/classes/group",
+    icon: <Users className="w-10 h-10 mb-2" />
   },
   workshops: {
     title: "کارگاه‌ها و مسترکلاس‌ها",
     description: "دوره‌های فشرده و تخصصی برای ارتقای مهارت‌های حرفه‌ای",
-    link: "/classes/workshops"
+    link: "/classes/workshops",
+    icon: <Video className="w-10 h-10 mb-2" />
   },
 }
 
 export default function ClassTypesPage() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+    const { isDarkMode, toggleDarkMode } = useTheme()
 
   useEffect(() => {
     document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
   }, [isDarkMode])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode)
-  }
 
   return (
     <div dir="rtl" className={`flex flex-col min-h-screen ${isDarkMode ? 'bg-[#2E2E2E] text-white' : 'bg-white text-[#2E2E2E]'} font-sans`}>
@@ -71,21 +71,24 @@ export default function ClassTypesPage() {
         </section>
 
         <section className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[classTypes.prv , classTypes.group, classTypes.workshops].map((service, index) => (
-                <a 
-                  href={service.link} 
-                  key={index} 
-                  className={`w-full md:w-64 h-auto md:h-40 p-4 rounded-lg transition-colors duration-300 hover:bg-gray-500 hover:text-white ${isDarkMode ? 'bg-white text-[#2E2E2E]' : 'bg-[#2E2E2E] text-white'}`}
-                >
-                  <div className="text-right">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[classTypes.prv , classTypes.group, classTypes.workshops].map((service, index) => (
+              <a 
+                href={service.link} 
+                key={index} 
+                className={`w-full md:w-64 h-auto md:h-40 p-4 rounded-lg transition-colors duration-300 hover:bg-gray-500 hover:text-white ${isDarkMode ? 'bg-white text-[#2E2E2E]' : 'bg-[#2E2E2E] text-white'}`}
+              >
+                <div className="flex flex-col items-center h-full">
+                  {service.icon}
+                  <div className="text-center">
                     <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                    <p className={`mt-4 md:${index === 1 ? 'mt-4' : 'mt-6'}`}>{service.description}</p>
+                    <p className="text-sm">{service.description}</p>
                   </div>
-                </a>
-              ))}
-            </div>
-          </section>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer className="mt-20 flex justify-center items-center mb-4">

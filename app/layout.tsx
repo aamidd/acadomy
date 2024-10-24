@@ -1,6 +1,7 @@
 import './globals.css'
 import { Cairo } from 'next/font/google'
 import CustomHead from './CustomHead'
+import { ThemeProvider } from './theme-context'
 
 
 const inter = Cairo({weight: '400', subsets: ['latin'] })
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <ThemeProvider>
         <CustomHead/>
         {children}
+      </ThemeProvider>
         </body>
     </html>
   )

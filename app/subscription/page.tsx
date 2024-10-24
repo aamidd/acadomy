@@ -1,23 +1,20 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useTheme } from '../theme-context'
 
 export const runtime = "edge"
 
 export default function Component() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+    const { isDarkMode, toggleDarkMode } = useTheme()
 
   useEffect(() => {
     document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
   }, [isDarkMode])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode)
-  }
 
   return (
     <>
@@ -53,7 +50,7 @@ export default function Component() {
         
         <main className="flex-grow flex items-center justify-center">
           <section className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">کامینگ سون!</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">به زودی...</h1>
           </section>
         </main>
 

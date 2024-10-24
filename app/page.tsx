@@ -1,27 +1,23 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
 import Head from 'next/head'
 import Link from 'next/link'
-
+import { useTheme } from './theme-context'
 
 export const runtime = "edge"
 
 export default function Component() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { isDarkMode, toggleDarkMode } = useTheme()
 
   useEffect(() => {
     document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
   }, [isDarkMode])
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode)
-  }
-
   const content = {
-    title: "با آکادومی می‌ره‌سی!",
+    title: "فضای آنلاین آکادومی",
     subtitle: "در فضای آنلاین آکادومی، ما شما را همراهی می‌کنیم تا سفری دلچسب و پر از یادگیری در دنیای موسیقی و هنر تجربه کنید.",
     courses: {
       title: "کلاس های آکادومی",

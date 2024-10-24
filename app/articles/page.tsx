@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Moon, Sun, Search, Instagram, Send, HeadphonesIcon } from 'lucide-react'
+import { useTheme } from '../theme-context'
 
 interface Article {
   id: number
@@ -28,16 +29,12 @@ const articles: Article[] = [
 ]
 
 export default function ArticlesPage() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { isDarkMode, toggleDarkMode } = useTheme()
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
   }, [isDarkMode])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode)
-  }
 
   const filteredArticles = articles.filter(article =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -73,10 +70,7 @@ export default function ArticlesPage() {
 
       <main className="container mx-auto px-4 py-12 flex-grow">
         <section className="mb-20 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">مقالات آموزشی</h1>
-          <p className="text-lg md:text-xl mb-8 mt-8 max-w-2xl mx-auto">
-            مجموعه‌ای از مقالات آموزشی در زمینه‌های مختلف تکنولوژی و برنامه‌نویسی
-          </p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">محتوای تکمیلی آکادومی</h1>
         </section>
 
         <div className="mb-8 relative max-w-md mx-auto">
