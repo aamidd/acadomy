@@ -6,7 +6,6 @@ import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
 import Head from 'next/head'
 import Link from 'next/link'
 
-
 export const runtime = "edge"
 
 export default function Component() {
@@ -18,26 +17,6 @@ export default function Component() {
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode)
-  }
-
-  const content = {
-    title: "با آکادومی می‌ره‌سی!",
-    subtitle: "در فضای آنلاین آکادومی، ما شما را همراهی می‌کنیم تا سفری دلچسب و پر از یادگیری در دنیای موسیقی و هنر تجربه کنید.",
-    courses: {
-      title: "کلاس های آکادومی",
-      description: "شامل کلاس های خصوصی ساز و دوره های چند جلسه ای موسیقی",
-      link: "/classes"
-    },
-    sub: {
-      title: "اشتراک آکادومی",
-      description: "دسترسی به تمامی کلاس های هفتگی و دوره های آکادومی به همراه مشاوره هنری خصوصی",
-      link: "/subscription"
-    },
-    sup: {
-      title: "محتوای تکمیلی آکادومی",
-      description: "شامل ویدیوها و مقالات آموزشی پژوهشی در زمینه هنر",
-      link: "/articles"
-    }
   }
 
   return (
@@ -58,7 +37,7 @@ export default function Component() {
                 />
               </a>
               <a href="/">
-              <span className="font-semibold text-xl">آکادومی</span>
+                <span className="font-semibold text-xl">آکادومی</span>
               </a>
             </div>
             <div className="flex items-center space-x-4 space-x-reverse">
@@ -71,30 +50,10 @@ export default function Component() {
             </div>
           </nav>
         </header>
-
-        <main className="container mx-auto px-4 py-12 flex-grow text-center">
-          <section className="mb-20">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">{content.title}</h1>
-            <p className="text-lg md:text-xl mb-8 mt-8 max-w-2xl mx-auto">
-              {content.subtitle}
-            </p>
-          </section>
-
-          <section className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[content.courses, content.sub, content.sup].map((service, index) => (
-                <a 
-                  href={service.link} 
-                  key={index} 
-                  className={`w-full md:w-64 h-auto md:h-40 p-4 rounded-lg transition-colors duration-300 hover:bg-gray-500 hover:text-white ${isDarkMode ? 'bg-white text-[#2E2E2E]' : 'bg-[#2E2E2E] text-white'}`}
-                >
-                  <div className="text-right">
-                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                    <p className={`mt-4 md:${index === 1 ? 'mt-4' : 'mt-6'}`}>{service.description}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
+        
+        <main className="flex-grow flex items-center justify-center">
+          <section className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">کامینگ سون!</h1>
           </section>
         </main>
 
