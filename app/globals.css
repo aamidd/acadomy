@@ -8,10 +8,18 @@
 }
 
 @font-face {
-  font-family: 'Yekan Bakh';
-  src: url('/fonts/Yekan.woff') format('woff'),
-       url('/fonts/Yekan.ttf') format('truetype');
+  font-family: 'YekanBakh';
+  src: url('/fonts/Eco/YekanBakhFaNum/webfonts/woff2/YekanBakhFaNum-Regular.woff2') format('woff2'),
+       url('/fonts/Eco/YekanBakhFaNum/webfonts/woff2/YekanBakhFaNum-Regular.woff') format('woff');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('/fonts/Eco/YekanBakhFaNum/webfonts/woff2/YekanBakhFaNum-Bold.woff2') format('woff2'),
+       url('/fonts/Eco/YekanBakhFaNum/webfonts/woff2/YekanBakhFaNum-Bold.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -20,6 +28,10 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -34,11 +46,24 @@ body {
   }
 }
 
-h1, h2, h3, p, span, button {
-  font-family: 'Yekan Bakh', serif;
+h2, h3, p, span, button {
+  font-family: 'YekanBakh', serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-variation-settings:
     "slnt" 0;
+}
+
+h1 {
+  font-family: 'YekanBakh', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: bold;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+h1, p, span, button {
+  color: #303030
 }

@@ -21,15 +21,15 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme === 'dark') {
       setIsDarkMode(true)
-      document.body.style.backgroundColor = '#2E2E2E'
+      document.body.style.backgroundColor = '#303030'
     } else {
-      document.body.style.backgroundColor = 'white'
+      document.body.style.backgroundColor = '#F0F0F0'
     }
   }, [])
 
   useEffect(() => {
     // Update the theme and save the preference to localStorage
-    document.body.style.backgroundColor = isDarkMode ? '#2E2E2E' : 'white'
+    document.body.style.backgroundColor = isDarkMode ? '#303030' : '#F0F0F0'
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')
   }, [isDarkMode])
 

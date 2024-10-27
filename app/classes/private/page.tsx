@@ -80,7 +80,7 @@ export default function RegistrationForm() {
 
       <main className="container mx-auto px-4 py-12 flex-grow">
         <section className="mb-20 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">فرم ثبت‌نام در کلاس‌های آکادومی</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl mx-auto leading-tight">فرم ثبت‌نام در کلاس‌های خصوصی آکادومی</h1>
           <p className="text-lg md:text-xl mb-8 mt-8 max-w-2xl mx-auto">
             با تکمیل این فرم، شما درخواست ثبت‌نام خود را برای ما ارسال می‌کنید. پس از دریافت اطلاعات شما، تیم پشتیبانی ما طی ۲۴ ساعت آینده با شما تماس خواهد گرفت تا جزئیات بیشتر را بررسی کرده و فرآیند ثبت‌نام را نهایی کند.
           </p>
