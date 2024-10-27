@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import Image from 'next/image'
-import { Moon, Sun, Instagram, Send, HeadphonesIcon } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useTheme } from './theme-context'
